@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+<!--    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">-->
+<!--    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">-->
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/myStyle.css">
+  </head>
+  <body>
+
+    <div id="app">
+      <el-row :gutter="20">
+        <el-col :span="12">
+          <el-input placeholder="请输入学号" v-model="stuId">
+            <template slot="prepend"><el-checkbox v-model="stuIdChecked">学号</el-checkbox></template>
+          </el-input>
+        </el-col>
+        <el-col :span="12">
+          <el-input placeholder="请输入班级" v-model="classId" class="grid-content bg-purple">
+            <template slot="prepend"><el-checkbox v-model="classIdChecked">班级</el-checkbox></template>
+          </el-input>
+        </el-col>
+      </el-row>
+      <el-row  :gutter="20">
+        <el-col :span="12">
+          <el-input placeholder="请输入姓名" v-model="stuName">
+            <template slot="prepend"><el-checkbox v-model="stuNameChecked">姓名</el-checkbox></template>
+          </el-input>
+        </el-col>
+        <el-col :span="12">
+          <el-input placeholder="请输入系别" v-model="department">
+            <template slot="prepend"><el-checkbox v-model="departmentChecked">系别</el-checkbox></template>
+          </el-input>
+        </el-col>
+      </el-row>
+      <el-row :gutter="20">
+        <el-col :span="6">
+          <el-input placeholder="最小年龄" v-model="ageMin">
+            <template slot="prepend"><el-checkbox v-model="ageChecked">年龄自</el-checkbox></template>
+          </el-input>
+        </el-col>
+        <el-col :span="6">
+          <el-input placeholder="最大年龄" v-model="ageMax">
+            <template slot="prepend">到</template>
+          </el-input>
+        </el-col>
+        <el-col :span="12">
+          <el-input placeholder="系别" v-model="address">
+            <template slot="prepend"><el-checkbox v-model="addressChecked">地址</el-checkbox></template>
+          </el-input>
+        </el-col>
+      </el-row>
+      <el-row  :gutter="20">
+        <el-col :span="12">
+          <el-input placeholder="请输入性别" v-model="gender">
+            <template slot="prepend"><el-checkbox v-model="genderChecked">性别</el-checkbox></template>
+          </el-input>
+        </el-col>
+        <el-col :span="3">
+          <el-button type="info" @click="deleteInfo()">清空内容</el-button>
+        </el-col>
+        <el-col :span="3">
+          <el-button type="primary" @click="generate()">生成语句</el-button>
+        </el-col>
+        <el-col :span="3">
+          <el-button type="warning" @click="runMysql()">执行语句</el-button>
+        </el-col>
+        <el-col :span="3">
+          <el-button type="success" @click="generateAndRun()">生成并执行</el-button>
+        </el-col>
+      </el-row>
+      <el-input
+              type="textarea"
+              :rows="4"
+              placeholder="请输入或生成sql"
+              v-model="sqlString">
+      </el-input>
+      <div style="margin-top: 20px; height: 370px; overflow: auto;">
+        <el-table
+                :data="students"
+                stripe
+                border
+                style="width: 100%;">
+          <el-table-column
+                  prop="Sid"
+                  label="学号"
+                  width="120">
+          </el-table-column>
+          <el-table-column
+                  prop="Sname"
+                  label="姓名"
+                  width="100">
+          </el-table-column>
+          <el-table-column
+                  prop="Sage"
+                  label="年龄"
+                  width="100">
+          </el-table-column>
+          <el-table-column
+                  prop="Ssex"
+                  label="性别"
+                  width="100">
+          </el-table-column>
+          <el-table-column
+                  prop="Sclass"
+                  label="班级"
+                  width="100">
+          </el-table-column>
+          <el-table-column
+                  prop="Sdept"
+                  label="系别"
+                  width="100">
+          </el-table-column>
+          <el-table-column
+                  prop="Saddress"
+                  label="地址">
+          </el-table-column>
+        </el-table>
+      </div>
+    </div>
+    <!-- You can also require other files to run in this process -->
+    <script src="./js/vue.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./renderer.js" type="module"></script>
+  </body>
+</html>

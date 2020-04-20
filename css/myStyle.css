@@ -1,0 +1,10 @@
+.el-row {
+    margin-bottom: 20px;
+}
+.el-col {
+    border-radius: 4px;
+}
+.row-bg {
+    padding: 10px 0;
+    background-color: #f9fafc;
+}
